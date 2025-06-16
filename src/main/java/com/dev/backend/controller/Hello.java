@@ -12,6 +12,6 @@ public class Hello {
 
     @GetMapping
     public String hello() {
-        return "Vai tomar no cu " + new Date();
+        return "a b c" + new Date();
     }
 }
