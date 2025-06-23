@@ -30,10 +30,9 @@ public class EstadoService {
         return estadoNovo;
     }
 
-    public Estado excluir(Long id) {
+    public void excluir(Long id) {
         Estado estado = estadoRepository.findById(id).get();
         estadoRepository.delete(estado);
-        return estado;
     }
 
 

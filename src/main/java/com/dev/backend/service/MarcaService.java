@@ -30,10 +30,9 @@ public class MarcaService {
         return marcaNova;
     }
 
-    public Marca excluir(Long id) {
+    public void excluir(Long id) {
         Marca marca = marcaRepository.findById(id).get();
         marcaRepository.delete(marca);
-        return marca;
     }
 
 }
