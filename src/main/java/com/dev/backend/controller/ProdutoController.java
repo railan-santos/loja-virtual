@@ -3,9 +3,8 @@ package com.dev.backend.controller;
 import com.dev.backend.entity.Produto;
 import com.dev.backend.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,10 +16,24 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @GetMapping("/")
-    public List<Produto> listar(){
+    public List<Produto> listarProduto(){
         return produtoService.listarProduto();
     }
 
+    @PostMapping("/")
+    public Produto inserirProduto(@RequestBody Produto produto){
+        return produtoService.inserir(produto);
+    }
 
+    @PutMapping("/")
+    public Produto alterarProduto(@RequestBody Produto produto){
+        return produtoService.alterar(produto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarProduto(@PathVariable("id") Long id) {
+        produtoService.excluir(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

@@ -6,21 +6,25 @@ import lombok.Data;
 import java.util.Date;
 
 @Entity
-@Table(name= "estado")
+@Table(name = "imagens")
 @Data
-public class Estado {
+public class Imagens {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String nome;
 
-    private String sigla;
+    @ManyToOne
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAtualizacao;
+
+
 }
