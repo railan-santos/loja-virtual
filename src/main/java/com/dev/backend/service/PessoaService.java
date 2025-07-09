@@ -19,17 +19,19 @@ public class PessoaService {
         return pessoaRepository.findAll();
     }
 
-    public Pessoa cadastrarPessoa(Pessoa pessoa){
-        return pessoaRepository.saveAndFlush(pessoa);
+    public Pessoa cadastrarPessoa(Pessoa pessoa) {
+        pessoa.setDataCriacao(new Date());
+        Pessoa pessoaNova = pessoaRepository.saveAndFlush(pessoa);
+        return pessoaNova;
     }
 
-    public Pessoa alterar(Pessoa pessoa){
+    public Pessoa alterar(Pessoa pessoa) {
         pessoa.setDataAtualizacao(new Date());
         Pessoa pessoaNova = pessoaRepository.saveAndFlush(pessoa);
         return pessoaNova;
     }
 
-    public void excluir (Long id){
+    public void excluir(Long id) {
         Pessoa pessoa = pessoaRepository.findById(id).get();
         pessoaRepository.delete(pessoa);
     }
