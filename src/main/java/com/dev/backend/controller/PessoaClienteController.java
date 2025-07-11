@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/cliente")
+@RequestMapping("/api/pessoaCliente/")
 public class PessoaClienteController {
 
     @Autowired
     private PessoaClienteService pessoaClienteService;
 
-    @PostMapping("/")
+    @PostMapping()
     public Pessoa registrar(@RequestBody PessoaClienteRequestDTO pessoaClienteRequestDTO) {
         return pessoaClienteService.inserir(pessoaClienteRequestDTO);
     }
