@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pessoa")
+@RequestMapping("/pessoa/")
 public class PessoaController {
 
     @Autowired
     private PessoaService pessoaService;
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Pessoa> listar() {
         return pessoaService.listarPessoas();
     }

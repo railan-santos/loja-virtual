@@ -9,28 +9,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/permissao")
+@RequestMapping("/permissao/")
 public class PermissaoController {
 
     @Autowired
     private PermissaoService permissaoService;
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Permissao> listar() {
         return permissaoService.listarPermissao();
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public Permissao inserir(@RequestBody Permissao permissao) {
         return permissaoService.inserir(permissao);
     }
 
-    @PutMapping("/")
+    @PutMapping()
     public Permissao alterar(@RequestBody Permissao permissao) {
         return permissaoService.alterar(permissao);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Void> deletar(@PathVariable("id") Long id) {
         permissaoService.excluir(id);
         return ResponseEntity.ok().build();

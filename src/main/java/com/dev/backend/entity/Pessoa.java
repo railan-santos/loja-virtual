@@ -2,6 +2,7 @@ package com.dev.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -30,11 +31,17 @@ public class Pessoa {
 
     private String senha;
 
+    private String codigoRecuperacaoSenha;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataEnvioCodigo;
+
     private String endereco;
 
     private String cep;
 
     @OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
     @Setter(value = AccessLevel.NONE)
     private List<PermissaoPessoa> permissaoPessoa;
 
